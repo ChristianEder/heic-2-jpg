@@ -21,9 +21,17 @@ namespace Heic2Jpg
             {
                 foreach (string heic in heics)
                 {
-                    using (var image = new MagickImage(heic))
+                    System.Console.WriteLine("Trying to convert " + heic);
+                    try
                     {
-                        image.Write(heic.Replace(Path.GetExtension(heic), ".jpg"));
+                        using (var image = new MagickImage(heic))
+                        {
+                            image.Write(heic.Replace(Path.GetExtension(heic), ".jpg"));
+                        }    
+                    }
+                    catch
+                    {
+                        System.Console.WriteLine("Could not convert " + heic);
                     }
 
                     try
@@ -32,11 +40,14 @@ namespace Heic2Jpg
                     }
                     catch
                     {
+                        System.Console.WriteLine("Could not delete " + heic);
                     }
 
                     progressBar.Tick();
                 }
             }
+
+            System.Console.WriteLine("Converted .heics");
         }
     }
 }

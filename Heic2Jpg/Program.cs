@@ -17,7 +17,7 @@ namespace Heic2Jpg
             }
             System.Console.WriteLine("Found " + heics.Count() + " .heics");
             
-            using (var progressBar = new ProgressBar(heics.Length, "Converting .heic files to .jpg"))
+            //using (var progressBar = new ProgressBar(heics.Length, "Converting .heic files to .jpg"))
             {
                 foreach (string heic in heics)
                 {
@@ -29,9 +29,9 @@ namespace Heic2Jpg
                             image.Write(heic.Replace(Path.GetExtension(heic), ".jpg"));
                         }    
                     }
-                    catch
+                    catch(Exception e)
                     {
-                        System.Console.WriteLine("Could not convert " + heic);
+                        System.Console.WriteLine("Could not convert " + heic + ":" + e.ToString());
                     }
 
                     try
@@ -43,7 +43,7 @@ namespace Heic2Jpg
                         System.Console.WriteLine("Could not delete " + heic);
                     }
 
-                    progressBar.Tick();
+                    //progressBar.Tick();
                 }
             }
 

@@ -32,6 +32,7 @@ namespace Heic2Jpg
                     catch(System.Exception e)
                     {
                         System.Console.WriteLine("Could not convert " + heic + ":" + e.ToString());
+                        continue;
                     }
 
                     try

@@ -29,7 +29,7 @@ namespace Heic2Jpg
                             image.Write(heic.Replace(Path.GetExtension(heic), ".jpg"));
                         }    
                     }
-                    catch(Exception e)
+                    catch(System.Exception e)
                     {
                         System.Console.WriteLine("Could not convert " + heic + ":" + e.ToString());
                     }
